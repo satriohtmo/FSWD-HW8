@@ -9,8 +9,8 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      Film.belongsTo(models.Actor, { foreignKey: "actorId" });
-      Film.belongsTo(models.Category, { foreignKey: "categoryId" });
+      Film.belongsTo(models.Actor, { foreignKey: "ActorId" });
+      Film.belongsTo(models.Category, { foreignKey: "CategoryId" });
     }
   }
   Film.init(
@@ -19,8 +19,8 @@ module.exports = (sequelize, DataTypes) => {
       description: DataTypes.TEXT,
       release_year: DataTypes.INTEGER,
       rating: DataTypes.INTEGER,
-      actorId: DataTypes.INTEGER,
-      categoryId: DataTypes.INTEGER,
+      ActorId: DataTypes.INTEGER,
+      CategoryId: DataTypes.INTEGER,
     },
     {
       sequelize,

@@ -21,14 +21,14 @@ module.exports = {
       rating: {
         type: Sequelize.INTEGER,
       },
-      actorId: {
+      ActorId: {
         type: Sequelize.INTEGER,
         references: {
           model: "Actors",
           key: "id",
         },
       },
-      categoryId: {
+      CategoryId: {
         type: Sequelize.INTEGER,
         references: {
           model: "Categories",
