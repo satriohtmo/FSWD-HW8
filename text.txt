@@ -1,0 +1,1 @@
+maaf ka saya belum mengerti restore database jadi saya buat database dan model dari sequelize

@@ -1,0 +1,48 @@
+[
+  {
+    "title": "Iron Man",
+    "description": "Iron Man tells the story of Tony Stark, a billionaire industrialist and genius inventor who is kidnapped and forced to build a devastating weapon. Instead, using his intelligence and ingenuity, Tony builds a high-tech suit of armor and escapes captivity.",
+    "rating": 8,
+    "actorId": 1,
+    "categoryId": 2
+  },
+  {
+    "title": "Dr.Strange",
+    "description": "After a horrible car accident, brilliant neurosurgeon Stephen Strange must find a way and a cure to healing his hands. His quest brings him to Kamar-Taj in Nepal where he studies under the Ancient One, who teaches him the ways of magic and alternate realities.",
+    "rating": 7,
+    "actorId": 1,
+    "categoryId": 3
+  },
+  {
+    "title": "Captain America",
+    "description": "Steve Rogers, a weak, sickly young man eager to fight is repeatedly rejected from the war-until a seemingly crazy scientist recruits him in a new experiment to turn the tides. He is transformed into the super soldier the world needs, but no one believes it.",
+    "release_year": 1999,
+    "rating": 7,
+    "actorId": 2,
+    "categoryId": 1
+  },
+  {
+    "title": "The Incredible Hulk",
+    "description": "The film explores Bruce Banner's origins. After a lab accident involving gamma radiation, he transforms into a giant, green-skinned creature known as the Hulk whenever stressed or emotionally provoked. The United States military pursues him.",
+    "release_year": 1999,
+    "rating": 6,
+    "actorId": 3,
+    "categoryId": 1
+  },
+  {
+    "title": "Thor",
+    "description": "A war is waged between the frost giants and Thor's (Chris Hemsworth's) homeland. Loki (Tom Hiddleston) fights for his right to the throne. Thor is cast out of Asgard by his father Odin (Sir Anthony Hopkins) and sent to Midgard (Earth) as punishment for his arrogance and disobedience in his battle.",
+    "release_year": 1999,
+    "rating": 7,
+    "actorId": 4,
+    "categoryId": 3
+  },
+  {
+    "title": "The Avengers",
+    "description": "In the film, S.H.I.E.L.D. director Nick Fury assembles Iron Man, Captain America, Hulk, Thor, Black Widow and Hawkeye to battle Thor's adoptive brother, Loki, who attempts to subjugate humanity by leading an invasion by the extraterrestrial race known as the Chitauri.",
+    "release_year": 1999,
+    "rating": 9,
+    "actorId": 2,
+    "categoryId": 4
+  }
+]
