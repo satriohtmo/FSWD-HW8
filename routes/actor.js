@@ -1,7 +1,7 @@
-// const express = require("express");
-// const router = express.Router();
-// const controller = require("../controlles/controller");
+const express = require("express");
+const router = express.Router();
+const controller = require("../controllers/controller");
 
-// router.get("/", controller.getAllActor);
+router.get("/", controller.getActor);
 
-// module.exports = router;
+module.exports = router;

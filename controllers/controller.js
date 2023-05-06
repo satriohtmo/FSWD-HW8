@@ -72,6 +72,15 @@ class Controller {
       console.log(err);
     }
   }
+
+  static async getActor(req, res) {
+    try {
+      const actor = await Actor.findAll();
+      res.status(200).json({ data: actor });
+    } catch (err) {
+      console.log(err);
+    }
+  }
 }
 
 module.exports = Controller;
