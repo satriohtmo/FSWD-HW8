@@ -1,0 +1,23 @@
+-- Install package
+npm i pg express sequelize 
+npm i --save-dev nodemon sequelize-cli
+
+-- Config change to local
+
+-- create DB
+npx sequelize db:create 
+
+-- DB migrate 
+npx sequelize db:migrate:all
+
+-- DB seeding
+npx sequelize db:seed:all
+
+-- Migration done
+
+-- Run nodemon
+npx nodemon app.js
+
+-- Post / Add new film
+postman hit with body x-www-form-urlencoded
+
