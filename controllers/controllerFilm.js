@@ -1,7 +1,7 @@
 const { Actor, Category, Film } = require("../models");
 
 class Controller {
-  static async getAllFilm(req, res) {
+  static async getAllFilm(req, res, next) {
     try {
       const { page, size } = req.query;
       const dataFilm = await Film.findAndCountAll({
@@ -17,11 +17,11 @@ class Controller {
       });
       res.status(200).json({ data: dataFilm });
     } catch (err) {
-      console.log(err);
+      next(err);
     }
   }
 
-  static async filmById(req, res) {
+  static async filmById(req, res, next) {
     try {
       const { id } = req.params;
       const filmId = await Film.findByPk(+id, {
@@ -34,16 +34,15 @@ class Controller {
         },
       });
       if (filmId === null) {
-        console.log("data not found");
-        res.status(404).json({ message: "data not found" });
+        throw { name: "NotFound" };
       }
       res.status(200).json({ data: filmId });
     } catch (err) {
-      console.log(err);
+      next(err);
     }
   }
 
-  static async addNewFilm(req, res) {
+  static async addNewFilm(req, res, next) {
     try {
       const { title, description, release_year, rating, ActorId, CategoryId } = req.body;
       const newFilm = await Film.create({
@@ -56,34 +55,31 @@ class Controller {
       });
       res.status(201).json({ statusCode: 201, message: "Film created successfully", data: newFilm });
     } catch (err) {
-      console.log(err);
+      next(err);
     }
   }
 
-  static async deleteFilmById(req, res) {
+  static async deleteFilmById(req, res, next) {
     try {
       const { id } = req.params;
       const deleteFilm = Film.destroy({ where: { id } });
 
       if (deleteFilm <= 0) {
-        console.log("data not found");
-        res.status(404).json({ message: "data not found" });
+        throw { name: "NotFound" };
       }
-
       res.status(200).json({
         statusCode: 200,
         message: `Movie with id ${id} success to deleted`,
       });
     } catch (err) {
-      console.log(err);
+      next(err);
     }
   }
 
-  static async updateFilm(req, res) {
+  static async updateFilm(req, res, next) {
     try {
       const { id } = req.params;
       const { title, description, release_year, rating, ActorId, CategoryId } = req.body;
-      //   const film = await Film.findByPk(id);
       const updatedFilm = await Film.update(
         {
           title,
@@ -97,11 +93,10 @@ class Controller {
       );
       res.status(200).json({
         statusCode: 200,
-        // msg: `Film with id ${film.id} updated`,
         data: updatedFilm,
       });
     } catch (err) {
-      console.log(err);
+      next(err);
     }
   }
 }
