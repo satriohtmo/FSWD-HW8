@@ -9,6 +9,6 @@ router.get("/", controller.getAllFilm);
 router.post("/", controller.addNewFilm);
 router.get("/:id", controller.filmById);
 router.delete("/:id", controller.deleteFilmById);
-router.patch("/:id", controller.updateFilm);
+router.put("/:id", controller.updateFilm);
 
 module.exports = router;

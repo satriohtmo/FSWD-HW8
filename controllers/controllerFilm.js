@@ -1,3 +1,152 @@
+/**
+ * @swagger
+ * components:
+ *   schemas:
+ *     Films:
+ *       type: object
+ *       required:
+ *         - title
+ *         - description
+ *         - release_year
+ *         - rating
+ *         - ActorId
+ *         - CategoryId
+ *       properties:
+ *         title:
+ *           type: string
+ *           description: The title of the film
+ *         description:
+ *           type: text
+ *           description: The film explanation
+ *         release_year:
+ *           type: integer
+ *           description: The release of the film
+ *         rating:
+ *           type: integer
+ *           description: Rating of the film
+ *         ActorId:
+ *           type: integer
+ *           description: Asosiate with the actor
+ *         CategoryId:
+ *           type: integer
+ *           description: Asosiate with the category
+ *
+ */
+/**
+
+/**
+ * @swagger
+ * tags:
+ *    name: Films
+ *    description: The films managing API
+ * /films?page={page}&size={size}:
+ *    get:
+ *      summary: Get all films by pagination
+ *      tags: [Films]
+ *      parameters:
+ *         - in: query
+ *           name: page
+ *           schema:
+ *             type: integer
+ *           description: The number of items to skip before starting to collect the result set
+ *         - in: query
+ *           name: size
+ *           schema:
+ *             type: integer
+ *           description: The numbers of items to return
+ *      responses:
+ *        200:
+ *          description: The created movie.
+ *          content:
+ *            application/json:
+ *              schema:
+ *                $ref: '#/components/schemas/Films'
+ *        500:
+ *          description: Some server error
+ * /films:
+ *   post:
+ *      summary: Create a new Film
+ *      tags: [Films]
+ *      requestBody:
+ *        required: true
+ *        content:
+ *          application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Films'
+ *      responses:
+ *        200:
+ *          description: The created movie.
+ *          content:
+ *            application/json:
+ *              schema:
+ *                $ref: '#/components/schemas/Films'
+ *        500:
+ *          description: Some server error
+ * /films/{id}:
+ *   get:
+ *      summary: Get the films by id
+ *      tags: [Films]
+ *      parameters:
+ *        - in: path
+ *          name: id
+ *          schema:
+ *            type: string
+ *          required: true
+ *          description: The films by id
+ *      responses:
+ *        200:
+ *          description: The films created by id
+ *          content:
+ *            application/json:
+ *              schema:
+ *                $ref: '#/components/schemas/Films'
+ *        404:
+ *          description: The films was not found
+ *   put:
+ *      summary: Update the films by id
+ *      tags: [Films]
+ *      parameters:
+ *        - in: path
+ *          name: id
+ *          schema:
+ *            type: string
+ *          required: true
+ *          description: The films by id
+ *      requestBody:
+ *          required: true
+ *          content:
+ *             application/json:
+ *               schema:
+ *                 $ref: '#/components/schemas/Films'
+ *      responses:
+ *        200:
+ *          description: The films was updated
+ *          content:
+ *            application/json:
+ *              schema:
+ *                $ref: '#/components/schemas/Films'
+ *        404:
+ *          description: The films was not found
+ *        505:
+ *          description: Some error happened
+ *   delete:
+ *      summary: Remove the films by id
+ *      tags: [Films]
+ *      parameters:
+ *        - in: path
+ *          name: id
+ *          schema:
+ *            type: string
+ *          required: true
+ *          description: The films by id
+ *
+ *      responses:
+ *        200:
+ *          description: The films created by id
+ *        404:
+ *          description: The films was not found
+ */
+
 const { Actor, Category, Film } = require("../models");
 
 class Controller {

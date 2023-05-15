@@ -1,6 +1,7 @@
 const express = require("express");
 const app = express();
 const port = 3000;
+const morgan = require("morgan");
 const swaggerJsDoc = require("swagger-jsdoc");
 const swaggerUi = require("swagger-ui-express");
 const errorHandler = require("./middlewares/errorHandler");
@@ -18,14 +19,29 @@ const options = {
         url: "http://localhost:3000",
       },
     ],
+    components: {
+      securitySchemes: {
+        ApiKeyAuth: {
+          type: "apiKey",
+          in: "header",
+          name: "access_token",
+        },
+      },
+    },
+    security: [
+      {
+        ApiKeyAuth: [],
+      },
+    ],
   },
-  apis: ["./routes/*.js"],
+  apis: ["./controllers/*.js"],
 };
 
 const specs = swaggerJsDoc(options);
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+app.use(morgan("combined"));
 app.use(require("./routes"));
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(specs, { explorer: true }));
 app.use(errorHandler);

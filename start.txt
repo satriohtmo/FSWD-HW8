@@ -21,3 +21,10 @@ npx nodemon app.js
 -- Post / Add new film
 postman hit with body x-www-form-urlencoded
 
+-- login
+with headers access_token
+
+-- To start
+npm run tes
+
+-- Folder SS = sreenshoot
