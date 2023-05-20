@@ -9,7 +9,8 @@ const authentication = require("../middlewares/authentication");
 
 router.post("/register", controllerUser.register);
 router.post("/login", controllerUser.login);
-// router.use(authentication);
+
+router.use("/assets", express.static("assets"));
 router.use("/actors", actor);
 router.use("/categories", category);
 router.use("/films", film);

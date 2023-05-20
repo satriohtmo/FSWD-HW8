@@ -148,6 +148,7 @@
  */
 
 const { Actor, Category, Film } = require("../models");
+const cloudinaryConfig = require("../config/cloudinary");
 
 class Controller {
   static async getAllFilm(req, res, next) {
@@ -173,15 +174,17 @@ class Controller {
   static async filmById(req, res, next) {
     try {
       const { id } = req.params;
-      const filmId = await Film.findByPk(+id, {
-        include: [
-          { model: Actor, attributes: ["first_name", "last_name"] },
-          { model: Category, attributes: ["name"] },
-        ],
-        attributes: {
-          exclude: ["createdAt", "updatedAt"],
-        },
-      });
+      const filmId = await Film.findByPk(
+        +id
+        //   include: [
+        //     { model: Actor, attributes: ["first_name", "last_name"] },
+        //     { model: Category, attributes: ["name"] },
+        //   ],
+        //   attributes: {
+        //     exclude: ["createdAt", "updatedAt"],
+        //   },
+        // });
+      );
       if (filmId === null) {
         throw { name: "NotFound" };
       }
@@ -201,6 +204,7 @@ class Controller {
         rating: +rating,
         ActorId: +ActorId,
         CategoryId: +CategoryId,
+        photo: req.file.path,
       });
       res.status(201).json({ statusCode: 201, message: "Film created successfully", data: newFilm });
     } catch (err) {
@@ -237,6 +241,7 @@ class Controller {
           rating: +rating,
           ActorId: +ActorId,
           CategoryId: +CategoryId,
+          photo: req.file.path,
         },
         { where: { id } }
       );

@@ -192,6 +192,41 @@ class Controller {
       next(err);
     }
   }
+
+  static async editUser(req, res, next) {
+    const { user_name, email, password } = req.body;
+    const { id } = req.params;
+    try {
+      const editUser = await User.update(
+        {
+          user_name,
+          email,
+          password,
+          photo: req.file.path,
+        },
+        { where: { id } }
+      );
+      res.status(200).json({
+        statusCode: 200,
+        data: editUser,
+      });
+    } catch (err) {
+      next(err);
+    }
+  }
+
+  static async deleteUser(req, res, next) {
+    try {
+      const { id } = req.params;
+      const deleteUser = User.destroy({ where: id });
+      if (deleteUser <= 0) {
+        throw { name: "NotFound" };
+      }
+      res.status(200).json({ statusCode: 200, msg: `user with ${id} has been deleted` });
+    } catch (err) {
+      next(err);
+    }
+  }
 }
 
 module.exports = Controller;

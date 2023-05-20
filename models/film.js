@@ -21,6 +21,7 @@ module.exports = (sequelize, DataTypes) => {
       rating: DataTypes.INTEGER,
       ActorId: DataTypes.INTEGER,
       CategoryId: DataTypes.INTEGER,
+      photo: DataTypes.STRING,
     },
     {
       sequelize,
